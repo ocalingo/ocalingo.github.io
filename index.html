@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Oliver Calingo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f7f4ef;
+      --ink: #1a1814;
+      --warm-gray: #7a746e;
+      --gold: #b89b6a;
+      --light-line: #e2dcd4;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem;
+      background: rgba(247,244,239,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--light-line);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 4rem 6rem 6rem;
+      border-right: 1px solid var(--light-line);
+      animation: fadeUp 1s ease both;
+    }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 300;
+      line-height: 1.0;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name em { font-style: italic; color: var(--gold); }
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--warm-gray);
+      line-height: 1.75;
+      max-width: 380px;
+      margin-bottom: 3rem;
+    }
+    .hero-cta {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid var(--ink);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+      align-self: flex-start;
+    }
+    .hero-cta:hover { background: var(--ink); color: var(--cream); }
+    .hero-right {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 3rem 3rem 3rem 3rem;
+      animation: fadeUp 1s 0.2s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual {
+      width: 100%; height: 65vh;
+      background: linear-gradient(135deg, #d9d0c1 0%, #c4b99a 40%, #b89b6a33 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.08) 60px,
+        rgba(255,255,255,0.08) 61px
+      );
+    }
+    .hero-visual-label {
+      position: absolute; bottom: 1.5rem; right: 1.5rem;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .hero-stats {
+      display: flex; gap: 3rem; padding: 2.5rem 0 0;
+      border-top: 1px solid var(--light-line);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--ink);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 7rem 6rem; }
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 4rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-line);
+    }
+    .section-num {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--gold);
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+    }
+
+    /* ── PORTFOLIO GRID ── */
+    #portfolio { background: #f2ede6; }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--light-line);
+    }
+    .portfolio-item {
+      background: var(--cream);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      group: true;
+    }
+    .portfolio-thumb {
+      width: 100%; aspect-ratio: 4/3;
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+    .thumb-bg {
+      width: 100%; height: 100%;
+      transition: transform 0.5s ease;
+    }
+    .portfolio-item:hover .thumb-bg { transform: scale(1.04); }
+    .thumb-1 { background: linear-gradient(135deg, #c9bfae, #a89880); }
+    .thumb-2 { background: linear-gradient(135deg, #b8c4c2, #8fa5a2); }
+    .thumb-3 { background: linear-gradient(135deg, #c4bbc8, #9b90a6); }
+    .thumb-4 { background: linear-gradient(135deg, #c2bbb0, #9d937f); }
+    .thumb-5 { background: linear-gradient(135deg, #bec8c4, #8fa49e); }
+    .thumb-6 { background: linear-gradient(135deg, #ccc3b5, #ada08d); }
+    .thumb-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .thumb-icon {
+      font-size: 2.5rem; opacity: 0.3; user-select: none;
+    }
+    /* video badge */
+    .video-badge {
+      position: absolute; top: 1rem; right: 1rem;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+    }
+    .portfolio-info {
+      padding: 1.4rem 1.6rem 1.8rem;
+    }
+    .portfolio-cat {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .portfolio-title-item {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+    .portfolio-year {
+      font-size: 0.7rem;
+      color: var(--warm-gray);
+    }
+
+    /* Video Embed */
+    .video-section { padding: 0 6rem 7rem; }
+    .video-section-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--warm-gray);
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+    .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .video-wrapper {
+      background: var(--ink);
+      aspect-ratio: 16/9;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.3);
+      gap: 0.8rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .video-placeholder:hover { background: rgba(255,255,255,0.05); }
+    .play-btn {
+      width: 56px; height: 56px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .video-placeholder:hover .play-btn {
+      border-color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.1);
+    }
+    .video-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .video-caption { padding: 1rem 0 0; }
+    .video-caption-title {
+      font-family: var(--serif); font-size: 1.1rem;
+    }
+    .video-caption-sub {
+      font-size: 0.68rem; color: var(--warm-gray); letter-spacing: 0.12em;
+      text-transform: uppercase; margin-top: 0.25rem;
+    }
+
+    /* ── RESUME ── */
+    #resume { border-top: 1px solid var(--light-line); }
+    .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .resume-col h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--light-line);
+    }
+    .resume-entry { margin-bottom: 2.5rem; }
+    .entry-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.3rem; }
+    .entry-title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+    }
+    .entry-date {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+    .entry-company {
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.05em;
+    }
+    .entry-desc {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      line-height: 1.7;
+    }
+    .skills-list {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem;
+    }
+    .skill-tag {
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--light-line);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--ink);
+      color: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .contact-left {
+      padding: 7rem 4rem 7rem 6rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-left .section-title { color: var(--cream); }
+    .contact-left .section-num { color: var(--gold); }
+    .contact-left .section-header { border-color: rgba(255,255,255,0.1); }
+    .contact-text {
+      font-size: 1rem;
+      color: rgba(247,244,239,0.6);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      max-width: 380px;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: rgba(247,244,239,0.7);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .contact-link:hover { color: var(--gold); }
+    .contact-link-icon { font-size: 1rem; width: 24px; text-align: center; }
+    .contact-right {
+      padding: 7rem 6rem 7rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .form-group { margin-bottom: 1.8rem; }
+    .form-label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding: 0.6rem 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-bottom-color: var(--gold);
+    }
+    .form-textarea { resize: none; height: 100px; }
+    .form-btn {
+      margin-top: 1rem;
+      padding: 0.9rem 2.5rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      cursor: pointer;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .form-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(247,244,239,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 6rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 3rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .video-section { padding: 0 1.5rem 4rem; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .resume-grid { grid-template-columns: 1fr; gap: 3rem; }
+      #contact { grid-template-columns: 1fr; }
+      .contact-left { padding: 4rem 1.5rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .contact-right { padding: 3rem 1.5rem; }
+      footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: 0.5rem; }
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Your Name</a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Design & Art Direction</p>
+    <h1 class="hero-name">Your<br><em>Name</em></h1>
+    <p class="hero-tagline">A multidisciplinary designer creating work at the intersection of craft, concept, and culture — for brands and people that matter.</p>
+    <a href="#portfolio" class="hero-cta">View Selected Work</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="thumb-inner" style="height:100%">
+        <span class="thumb-icon" style="font-size:5rem">✦</span>
+      </div>
+      <span class="hero-visual-label">Featured Work, 2025</span>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">8+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div>
+        <span class="stat-num">40+</span>
+        <span class="stat-label">Projects Completed</span>
+      </div>
+      <div>
+        <span class="stat-num">15+</span>
+        <span class="stat-label">Clients Worldwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO GRID -->
+<section id="portfolio" class="fade-in">
+  <div class="section-header">
+    <span class="section-num">01 /</span>
+    <h2 class="section-title">Selected Work</h2>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-item">
+      <div class="portfolio-thumb">
+        <div class="thumb-bg thumb-1"><div class="thumb-inner"><span class="thumb-icon">◈</span></div></div>
+      </div>
+      <div class="portfolio-info">
+        <p class="portfolio-cat">Brand Identity</p>
+        <h3 class="portfolio-title-item">Maison Atelier</h3>
+        <p class="portfolio-year">2025</p>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb">
+        <div class="thumb-bg thumb-2"><div class="thumb-inner"><span class="thumb-icon">▣</span></div></div>
+        <span class="video-badge">▶ Video</span>
+      </div>
+      <div class="portfolio-info">
+        <p class="portfolio-cat">Motion & Film</p>
+        <h3 class="portfolio-title-item">Drift Campaign</h3>
+        <p class="portfolio-year">2024</p>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb">
+        <div class="thumb-bg thumb-3"><div class="thumb-inner"><span class="thumb-icon">⬡</span></div></div>
+      </div>
+      <div class="portfolio-info">
+        <p class="portfolio-cat">Art Direction</p>
+        <h3 class="portfolio-title-item">Nord Editorial</h3>
+        <p class="portfolio-year">2024</p>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb">
+        <div class="thumb-bg thumb-4"><div class="thumb-inner"><span class="thumb-icon">✦</span></div></div>
+        <span class="video-badge">▶ Video</span>
+      </div>
+      <div class="portfolio-info">
+        <p class="portfolio-cat">Motion & Film</p>
+        <h3 class="portfolio-title-item">Solstice Reel</h3>
+        <p class="portfolio-year">2023</p>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb">
+        <div class="thumb-bg thumb-5"><div class="thumb-inner"><span class="thumb-icon">◉</span></div></div>
+      </div>
+      <div class="portfolio-info">
+        <p class="portfolio-cat">Print & Publication</p>
+        <h3 class="portfolio-title-item">Forma Magazine</h3>
+        <p class="portfolio-year">2023</p>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb">
+        <div class="thumb-bg thumb-6"><div class="thumb-inner"><span class="thumb-icon">⬨</span></div></div>
+      </div>
+      <div class="portfolio-info">
+        <p class="portfolio-cat">Brand Identity</p>
+        <h3 class="portfolio-title-item">Vale Studio</h3>
+        <p class="portfolio-year">2022</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SHOWCASE -->
+<div class="video-section fade-in">
+  <p class="video-section-title">— Featured Video Work</p>
+  <div class="video-grid">
+    <div>
+      <!-- Replace src with your YouTube/Vimeo embed URL -->
+      <div class="video-wrapper">
+        <div class="video-placeholder" onclick="loadVideo(this, 'https://www.youtube.com/embed/YOUR_VIDEO_ID')">
+          <div class="play-btn">▶</div>
+          <span class="video-label">Play Showreel</span>
+        </div>
+      </div>
+      <div class="video-caption">
+        <p class="video-caption-title">2024 Showreel</p>
+        <p class="video-caption-sub">Motion Design · Brand Film</p>
+      </div>
+    </div>
+    <div>
+      <div class="video-wrapper">
+        <div class="video-placeholder" onclick="loadVideo(this, 'https://www.youtube.com/embed/YOUR_VIDEO_ID_2')">
+          <div class="play-btn">▶</div>
+          <span class="video-label">Play Project Film</span>
+        </div>
+      </div>
+      <div class="video-caption">
+        <p class="video-caption-title">Drift Campaign — Behind the Scenes</p>
+        <p class="video-caption-sub">Art Direction · Film</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESUME -->
+<section id="resume" class="fade-in">
+  <div class="section-header">
+    <span class="section-num">02 /</span>
+    <h2 class="section-title">Résumé</h2>
+  </div>
+  <div class="resume-grid">
+    <div class="resume-col">
+      <h3>Experience</h3>
+      <div class="resume-entry">
+        <div class="entry-header">
+          <p class="entry-title">Senior Art Director</p>
+          <span class="entry-date">2022 — Present</span>
+        </div>
+        <p class="entry-company">Studio Name, New York</p>
+        <p class="entry-desc">Led visual identity and campaign development for global clients across fashion, culture, and lifestyle sectors.</p>
+      </div>
+      <div class="resume-entry">
+        <div class="entry-header">
+          <p class="entry-title">Graphic Designer</p>
+          <span class="entry-date">2019 — 2022</span>
+        </div>
+        <p class="entry-company">Agency Name, London</p>
+        <p class="entry-desc">Designed across brand, print, and digital touchpoints for a portfolio of mid-to-large brand clients.</p>
+      </div>
+      <div class="resume-entry">
+        <div class="entry-header">
+          <p class="entry-title">Junior Designer</p>
+          <span class="entry-date">2017 — 2019</span>
+        </div>
+        <p class="entry-company">Freelance / Various</p>
+        <p class="entry-desc">Built a diverse portfolio working independently across identity, editorial, and motion projects.</p>
+      </div>
+    </div>
+    <div class="resume-col">
+      <h3>Education</h3>
+      <div class="resume-entry">
+        <div class="entry-header">
+          <p class="entry-title">BFA Graphic Design</p>
+          <span class="entry-date">2013 — 2017</span>
+        </div>
+        <p class="entry-company">University Name</p>
+        <p class="entry-desc">Graduated with honors. Thesis focused on typographic systems in editorial design.</p>
+      </div>
+      <h3 style="margin-top: 3rem;">Skills</h3>
+      <div class="skills-list">
+        <span class="skill-tag">Brand Identity</span>
+        <span class="skill-tag">Art Direction</span>
+        <span class="skill-tag">Motion Design</span>
+        <span class="skill-tag">Editorial</span>
+        <span class="skill-tag">Typography</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Adobe CC</span>
+        <span class="skill-tag">After Effects</span>
+        <span class="skill-tag">Photography</span>
+        <span class="skill-tag">Illustration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade-in" style="padding: 0;">
+  <div class="contact-left">
+    <div class="section-header">
+      <span class="section-num">03 /</span>
+      <h2 class="section-title">Get In Touch</h2>
+    </div>
+    <p class="contact-text">Open to new projects, collaborations, and conversations. Let's create something meaningful together.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:hello@yourname.com">
+        <span class="contact-link-icon">✉</span> hello@yourname.com
+      </a>
+      <a class="contact-link" href="#">
+        <span class="contact-link-icon">in</span> linkedin.com/in/yourname
+      </a>
+      <a class="contact-link" href="#">
+        <span class="contact-link-icon">⬡</span> instagram.com/yourname
+      </a>
+      <a class="contact-link" href="#">
+        <span class="contact-link-icon">↗</span> Behance / Dribbble
+      </a>
+    </div>
+  </div>
+  <div class="contact-right">
+    <div class="form-group">
+      <label class="form-label">Your Name</label>
+      <input class="form-input" type="text" placeholder="Jane Smith" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input class="form-input" type="email" placeholder="jane@example.com" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Message</label>
+      <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+    </div>
+    <button class="form-btn">Send Message</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Your Name</span>
+  <span>Design & Art Direction</span>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Video embed loader
+  function loadVideo(el, src) {
+    const iframe = document.createElement('iframe');
+    iframe.src = src + '?autoplay=1';
+    iframe.frameBorder = '0';
+    iframe.allow = 'autoplay; fullscreen';
+    iframe.style.cssText = 'width:100%;height:100%;position:absolute;top:0;left:0;';
+    el.parentElement.style.position = 'relative';
+    el.parentElement.appendChild(iframe);
+    el.remove();
+  }
+</script>
+</body>
+</html>
