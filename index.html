@@ -185,28 +185,6 @@
       text-transform: uppercase; color: var(--muted);
     }
 
-    /* Fix Android Chrome image tap issue */
-    .work-card a img {
-      pointer-events: none;
-      -webkit-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
-      -webkit-user-drag: none;
-      display: block;
-      width: 100%;
-    }
-    .work-card a {
-      display: block;
-      margin-top: 16px;
-      position: relative;
-      z-index: 10;
-      -webkit-tap-highlight-color: rgba(42,171,140,0.3);
-      touch-action: manipulation;
-    }
-    .work-card::before {
-      z-index: 1;
-    }
-
     /* SECTION */
     .section { padding: 64px; border-bottom: 1px solid var(--border2); }
 
@@ -439,6 +417,7 @@
       }
 
       .sidebar-overlay { display: block; }
+
       .menu-btn { display: block; }
 
       /* Main content: full width, small top padding for menu button */
@@ -449,19 +428,6 @@
       .section { padding: 44px 24px; }
       .work-grid, .skills-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 12px; padding: 36px 24px; text-align: center; }
-
-      /* Ensure portfolio video links are always tappable on mobile */
-      #portfolio .work-card {
-        overflow: visible;
-        position: relative;
-        z-index: 1;
-      }
-      #portfolio .work-card a {
-        position: relative;
-        z-index: 20;
-        display: block;
-        margin-top: 12px;
-      }
     }
 
     @media (max-width: 520px) {
@@ -794,28 +760,26 @@
           <p class="work-desc">Centimo app puts everything you need, from easy payments to smart savings, right in your pocket.</p>
 
           <!-- YouTube Embed -->
-          <a href="https://www.youtube.com/watch?v=5sMlyRvPR04" target="_blank">
-              <img src="https://img.youtube.com/vi/5sMlyRvPR04/hqdefault.jpg" 
-              alt="Watch Video" 
-              style="width:100%; display:block; margin-top:16px; border:1px solid rgba(42,171,140,0.2);">
+          <div onclick="window.open('https://www.youtube.com/watch?v=5sMlyRvPR04','_blank')" 
+              style="display:block; margin-top:16px; position:relative; cursor:pointer;">
+              <img src="https://img.youtube.com/vi/5sMlyRvPR04/hqdefault.jpg"
+              alt="Watch Video"
+              style="width:100%; border:1px solid rgba(42,171,140,0.2); display:block;">
+            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+              background:rgba(42,171,140,0.9); padding:16px 28px; color:#fff;
+              font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase;
+              min-width:160px; text-align:center;">
+              ▶ Watch on YouTube
+            </div>
+          </div>
+
+          <a href="https://www.youtube.com/watch?v=ixNcRFhNzv8" target="_blank" style="display:block; margin-top:12px;"><img src="https://img.youtube.com/vi/ixNcRFhNzv8/hqdefault.jpg" alt="Watch on YouTube" style="width:100%; display:block; border:1px solid rgba(42,171,140,0.2); pointer-events:none;"></a>
           </a>
 
-          <a href="https://www.youtube.com/watch?v=ixNcRFhNzv8" target="_blank">
-              <img src="https://img.youtube.com/vi/ixNcRFhNzv8/hqdefault.jpg" 
-              alt="Watch Video" 
-              style="width:100%; display:block; margin-top:16px; border:1px solid rgba(42,171,140,0.2);">
+          <a href="https://www.youtube.com/watch?v=omTIzDe7acM" target="_blank" style="display:block; margin-top:12px;"><img src="https://img.youtube.com/vi/omTIzDe7acM/hqdefault.jpg" alt="Watch on YouTube" style="width:100%; display:block; border:1px solid rgba(42,171,140,0.2); pointer-events:none;"></a>
           </a>
 
-          <a href="https://www.youtube.com/watch?v=omTIzDe7acM" target="_blank">
-              <img src="https://img.youtube.com/vi/omTIzDe7acM/hqdefault.jpg" 
-              alt="Watch Video" 
-              style="width:100%; display:block; margin-top:16px; border:1px solid rgba(42,171,140,0.2);">
-          </a>
-
-          <a href="https://www.youtube.com/watch?v=OCnDAgRWOck" target="_blank">
-              <img src="https://img.youtube.com/vi/OCnDAgRWOck/hqdefault.jpg" 
-              alt="Watch Video" 
-              style="width:100%; display:block; margin-top:16px; border:1px solid rgba(42,171,140,0.2);">
+          <a href="https://www.youtube.com/watch?v=OCnDAgRWOck" target="_blank" style="display:block; margin-top:12px;"><img src="https://img.youtube.com/vi/OCnDAgRWOck/hqdefault.jpg" alt="Watch on YouTube" style="width:100%; display:block; border:1px solid rgba(42,171,140,0.2); pointer-events:none;"></a>
           </a>
         </div>
 
@@ -826,31 +790,18 @@
           <p class="work-desc">Real feedback from the clients who rely on infiniVAN every day, and our leaders share the vision, milestones, and strategy driving our growth.</p>
 
           <!-- YouTube Embed -->
-          <a href="https://www.youtube.com/watch?v=1mhEaOyGVic" target="_blank">
-              <img src="https://img.youtube.com/vi/1mhEaOyGVic/hqdefault.jpg" 
-              alt="Watch Video" 
-              style="width:100%; display:block; margin-top:16px; border:1px solid rgba(42,171,140,0.2);">
+          <a href="https://www.youtube.com/watch?v=1mhEaOyGVic" target="_blank" style="display:block; margin-top:12px;"><img src="https://img.youtube.com/vi/1mhEaOyGVic/hqdefault.jpg" alt="Watch on YouTube" style="width:100%; display:block; border:1px solid rgba(42,171,140,0.2); pointer-events:none;"></a>
           </a>
 
-          <a href="https://www.youtube.com/watch?v=_sbqbMmjy7I" target="_blank">
-              <img src="https://img.youtube.com/vi/_sbqbMmjy7I/hqdefault.jpg" 
-              alt="Watch Video" 
-              style="width:100%; display:block; margin-top:16px; border:1px solid rgba(42,171,140,0.2);">
+          <a href="https://www.youtube.com/watch?v=_sbqbMmjy7I" target="_blank" style="display:block; margin-top:12px;"><img src="https://img.youtube.com/vi/_sbqbMmjy7I/hqdefault.jpg" alt="Watch on YouTube" style="width:100%; display:block; border:1px solid rgba(42,171,140,0.2); pointer-events:none;"></a>
           </a>
 
-          <a href="https://www.youtube.com/watch?v=BroXRjChwHU" target="_blank">
-              <img src="https://img.youtube.com/vi/BroXRjChwHU/hqdefault.jpg" 
-              alt="Watch Video" 
-              style="width:100%; display:block; margin-top:16px; border:1px solid rgba(42,171,140,0.2);">
+          <a href="https://www.youtube.com/watch?v=BroXRjChwHU" target="_blank" style="display:block; margin-top:12px;"><img src="https://img.youtube.com/vi/BroXRjChwHU/hqdefault.jpg" alt="Watch on YouTube" style="width:100%; display:block; border:1px solid rgba(42,171,140,0.2); pointer-events:none;"></a>
           </a>
 
-          <a href="https://www.youtube.com/watch?v=T2vtIht1rXs" target="_blank">
-              <img src="https://img.youtube.com/vi/T2vtIht1rXs/hqdefault.jpg" 
-              alt="Watch Video" 
-              style="width:100%; display:block; margin-top:16px; border:1px solid rgba(42,171,140,0.2);">
+          <a href="https://www.youtube.com/watch?v=T2vtIht1rXs" target="_blank" style="display:block; margin-top:12px;"><img src="https://img.youtube.com/vi/T2vtIht1rXs/hqdefault.jpg" alt="Watch on YouTube" style="width:100%; display:block; border:1px solid rgba(42,171,140,0.2); pointer-events:none;"></a>
           </a>
         </div>
-        
         <div class="work-card observe">
           <div class="work-tag">Graphic Design · Keysquare Inc.</div>
           <div class="work-title">Pinoy Gazette</div>
@@ -923,7 +874,7 @@
 
     <footer>
       <div class="footer-copy">© 2026 Oliver F. Calingo · All rights reserved</div>
-      <a href="mailto:ocalingo@gmail.com" class="footer-cta">Let's work together →</a>
+      <a href="mailto:yourname@email.com" class="footer-cta">Let's work together →</a>
     </footer>
 
   </main>
@@ -960,36 +911,6 @@
   });
 
 
-  
-  // Mobile menu
-const menuBtn = document.getElementById('menuBtn');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('sidebarOverlay');
-
-function openSidebar() {
-  sidebar.classList.add('open');
-  overlay.classList.add('active');
-  menuBtn.textContent = '✕ Close';
-}
-
-function closeSidebar() {
-  sidebar.classList.remove('open');
-  overlay.classList.remove('active');
-  menuBtn.textContent = '☰ Menu';
-}
-
-menuBtn.addEventListener('click', () => {
-  sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
-});
-
-overlay.addEventListener('click', closeSidebar);
-
-// Close sidebar when nav tapped
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    if (window.innerWidth <= 960) closeSidebar();
-  });
-});
 
   // Accordion
   function toggleExp(id) { document.getElementById(id).classList.toggle('open'); }
@@ -998,6 +919,23 @@ document.querySelectorAll('.nav-link').forEach(link => {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.observe').forEach(el => observer.observe(el));
+
+  // Active nav
+  const navLinks = document.querySelectorAll('.nav-link');
+  const secObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('section[id]').forEach(s => secObserver.observe(s));
+</script>
+</body>
+</html>      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
   }, { threshold: 0.07 });
   document.querySelectorAll('.observe').forEach(el => observer.observe(el));
